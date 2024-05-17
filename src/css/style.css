@@ -139,7 +139,7 @@ a {
 	-o-transition: all 0.4s ease;
 	-ms-transition: all 0.4s ease;
 	-webkit-transition: all 0.4s ease;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 input,
 button {
@@ -10912,7 +10912,7 @@ font-weight: 500 !important;
 }
 .toggle-password {
 	position: absolute;
-	right: 17px;
-	top: 26%;
+	left: 15px;
+	top: 30%;
 	padding-right: 300px;
   }
