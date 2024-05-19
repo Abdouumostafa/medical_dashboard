@@ -1,6 +1,5 @@
 import { login02 } from '../../../imagesPath/imagesPath'
 const LoginBg = () => {
-    console.log('bg-color')
     return (
         <div className="col-lg-6 login-wrap">
             <div className="login-sec">

@@ -1,7 +1,8 @@
+import BaseLayout from "../../layouts/BaseLayout"
 
 const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <div><BaseLayout /></div>
     )
 }
 

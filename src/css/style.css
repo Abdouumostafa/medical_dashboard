@@ -792,7 +792,7 @@ textarea.form-control {
 	margin: 0;
 }
 .user-menu {
-	margin: 0;
+	margin-right: auto;
 	position: relative;
 	z-index: 99;
 }
@@ -990,7 +990,11 @@ textarea.form-control {
 	font-size: 14px;
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 8px 0 15px;
+}
+.sidebar-menu ul.main{
+	padding: 30px 0;
+	position: relative;
 }
 .sidebar-menu li a {
 	color: #888;
@@ -1143,7 +1147,7 @@ textarea.form-control {
 	position: absolute;
 	left: 25px;
 	display: inline-block;
-	font-family: "Noto Sans Arabic", sans-serif;
+	font-family: "FontAwesome";
 	text-rendering: auto;
 	line-height: 40px;
 	font-size: 15px;
@@ -1157,13 +1161,13 @@ textarea.form-control {
 	top: 23px;
 }
 .sidebar-menu .menu-arrow:before {
-	content: "\f105";
+	content: "\f053";
 }
 .sidebar-menu li a.subdrop .menu-arrow {
-	-ms-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
+	-ms-transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	transform: rotate(-90deg);
 }
 .sidebar-menu ul ul a .menu-arrow {
 	top: 6px;
@@ -1249,6 +1253,8 @@ textarea.form-control {
 }
 .logout-btn {
 	margin: 50px 0px;
+	position: absolute;
+	bottom: 80px;
 }
 .logout-btn a span.menu-side {
 	font-size: 18px;
@@ -1259,7 +1265,7 @@ textarea.form-control {
     border-radius: 8px;
     width: 40px;
     height: 40px;
-    margin-left: 0;
+    margin-left: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1462,9 +1468,8 @@ textarea.form-control {
 .btn-block {
     width: 100%;
 }
-.account-logo {
-	margin-bottom: 40px;
-	text-align: left;
+.account-logo img{
+margin-right: auto;
 }
 .login-right .btn-primary {
 	background: linear-gradient(92.39deg, #4E57CD 1.86%, #2E37A4 100%);
@@ -9889,6 +9894,7 @@ font-weight: 500 !important;
 		font-size: 20px;
 		line-height: 70px;
 		padding: 0 10px;
+		margin-top: 26px;
 	}
 	.user-active .call-imgs {
 		width: 100%;

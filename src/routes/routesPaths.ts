@@ -1,3 +1,4 @@
 export const pathList = {
-    login: '/'
+    login: '/',
+    homePage: '/home'
 }
