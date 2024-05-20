@@ -764,8 +764,8 @@ textarea.form-control {
 }
 .logo span {
 	color: #2E37A4;
-	font-size: 20px;
-	font-weight: 500;
+	font-size: 12px;
+	font-weight: 700;
 	margin-right: 10px;
 }
 .header .navbar-nav .badge {
@@ -791,6 +791,11 @@ textarea.form-control {
 	font-weight: 500;
 	margin: 0;
 }
+
+ul.user-menu{
+	padding: 0px;
+}
+
 .user-menu {
 	margin-right: auto;
 	position: relative;
@@ -833,6 +838,7 @@ textarea.form-control {
     opacity: 0;
     display: block;
 	transform: translate(0px, 100px);
+	text-align: right;
 }
 .user-menu .dropdown-menu.show {
 	visibility: visible;
@@ -938,7 +944,7 @@ textarea.form-control {
 	line-height: 20px;
 }
 .user-names {
-	padding-left: 10px;
+	padding-right: 10px;
 	text-align: left;
 }
 .user-names h5 {
@@ -9894,7 +9900,6 @@ font-weight: 500 !important;
 		font-size: 20px;
 		line-height: 70px;
 		padding: 0 10px;
-		margin-top: 26px;
 	}
 	.user-active .call-imgs {
 		width: 100%;
@@ -10921,5 +10926,5 @@ font-weight: 500 !important;
 .toggle-password {
 	position: absolute;
 	left: 15px;
-	top: 30%;
+	top: 20%;
   }

@@ -11,8 +11,8 @@ const LoginForm = () => {
           <div className="loginbox">
             <div className="login-right">
               <div className="login-right-wrap">
-                <div className="account-logo">
-                  <img src={loginlogo} alt="#" className='w-[120px]' />
+                <div className="account-logo text-start">
+                  <img src={loginlogo} alt="#" className='w-25' />
                 </div>
                 <h2>تسجيل دخول</h2>
                 <form>
