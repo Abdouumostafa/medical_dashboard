@@ -1,4 +1,4 @@
-import { dashboard, logout, patients, receipts } from "../../imagesPath/imagesPath";
+import { dashboard, logout, noteicon1, patients, receipts } from "../../imagesPath/imagesPath";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -206,6 +206,19 @@ const Sidebar = (props: any) => {
                     </Link>
                   </li>
                 </ul>
+              </li>
+              <li>
+                <Link
+                  className={
+                    props?.activeClassName === "chat" ? "active" : ""
+                  }
+                  to="/chat"
+                >
+                  <span className="menu-side">
+                    <img src={noteicon1} alt="" />
+                  </span>{" "}
+                  <span>الاشعارات</span>
+                </Link>
               </li>
             </ul>
             <div className="logout-btn">

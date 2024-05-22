@@ -17,3 +17,9 @@ export { default as imguser } from "../assets/layout/user.jpg";
 export { default as noteicon1 } from "../assets/layout/note-icon-01.svg";
 export { default as user06 } from "../assets/layout/user-06.jpg";
 export { default as settingicon01 } from "../assets/layout/setting-icon-01.svg";
+
+// HOME DASHBOARD
+export { default as profile_add } from "../assets/home/profile_add.svg";
+export { default as empty_wallet } from "../assets/home/empty_wallet.svg";
+export { default as scissor } from "../assets/home/scissor.svg";
+export { default as morning_img_01 } from "../assets/home/morning_img_01.png";
