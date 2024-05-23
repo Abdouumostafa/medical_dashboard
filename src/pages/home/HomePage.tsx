@@ -1,138 +1,18 @@
 import { Link } from "react-router-dom"
 import BaseLayout from "../../layouts/BaseLayout"
 import { empty_wallet, morning_img_01, profile_add, scissor } from "../../imagesPath/imagesPath"
+import StatsBox from "../../components/home/StatsBox"
+import StatsBoxs from "../../features/home/components/StatsBoxs"
 
 const HomePage = () => {
   return (
     <>
       <BaseLayout />
-
       <div className="page-wrapper">
         <div className="content">
+          <StatsBoxs />
           <div className="row">
-            <div className="col-md-6 col-sm-6 col-lg-6 col-xl-4">
-              <div className="dash-widget">
-                <div className="dash-boxs comman-flex-center">
-                  <img src={profile_add} alt="#" />
-                </div>
-                <div className="dash-content dash-count">
-                  <h4>المرضى</h4>
-                  <h2>
-                    {/* <CountUp delay={0.4} end={140} duration={0.6} /> */}
-                  </h2>
-                  <p>
-                    <span className="passive-view">
-                      <i className="feather-arrow-up-right me-1">
-                        {/* <FeatherIcon icon="arrow-up-right" /> */}
-                      </i>
-                      20%
-                    </span>{" "}
-                    vs last month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-6 col-lg-6 col-xl-4">
-              <div className="dash-widget">
-                <div className="dash-boxs comman-flex-center">
-                  <img src={scissor} alt="#" />
-                </div>
-                <div className="dash-content dash-count">
-                  <h4>التوريدات</h4>
-                  <h2>
-                    {/* <CountUp delay={0.4} end={56} duration={0.6} /> */}
-                  </h2>
-                  <p>
-                    <span className="negative-view">
-                      <i className="feather-arrow-down-right me-1">
-                        {/* <FeatherIcon icon="arrow-down-right"/> */}
-                      </i>
-                      15%
-                    </span>{" "}
-                    vs last month
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-sm-6 col-lg-6 col-xl-4">
-              <div className="dash-widget">
-                <div className="dash-boxs comman-flex-center">
-                  <img src={empty_wallet} alt="#" />
-                </div>
-                <div className="dash-content dash-count">
-                  <h4>الاستلامات</h4>
-                  <h2>
-                    {/* $<CountUp delay={0.4} end={20250} duration={0.6} /> */}
-                  </h2>
-                  <p>
-                    <span className="passive-view">
-                      <i className="feather-arrow-up-right me-1">
-                        {/* <FeatherIcon icon="arrow-up-right"/> */}
-                      </i>
-                      30%
-                    </span>{" "}
-                    vs last month
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12 col-md-12  col-xl-4">
-              <div className="card top-departments">
-                <div className="card-header">
-                  <h4 className="card-title mb-0">Top Departments</h4>
-                </div>
-                <div className="card-body">
-                  <div className="activity-top">
-                    <div className="activity-boxs comman-flex-center">
-                      {/* <img src={dep_icon1} alt="#"/> */}
-                    </div>
-                    <div className="departments-list">
-                      <h4>General Physician</h4>
-                      <p>35%</p>
-                    </div>
-                  </div>
-                  <div className="activity-top">
-                    <div className="activity-boxs comman-flex-center">
-                      {/* <img src={dep_icon2} alt="#" /> */}
-                    </div>
-                    <div className="departments-list">
-                      <h4>Dentist</h4>
-                      <p>24%</p>
-                    </div>
-                  </div>
-                  <div className="activity-top">
-                    <div className="activity-boxs comman-flex-center">
-                      {/* <img src={dep_icon3} alt="#" /> */}
-                    </div>
-                    <div className="departments-list">
-                      <h4>ENT</h4>
-                      <p>10%</p>
-                    </div>
-                  </div>
-                  <div className="activity-top">
-                    <div className="activity-boxs comman-flex-center">
-                      {/* <img src={dep_icon4} alt="#" /> */}
-                    </div>
-                    <div className="departments-list">
-                      <h4>Cardiologist</h4>
-                      <p>15%</p>
-                    </div>
-                  </div>
-                  <div className="activity-top mb-0">
-                    <div className="activity-boxs comman-flex-center">
-                      {/* <img src={dep_icon5} alt="#" /> */}
-                    </div>
-                    <div className="departments-list">
-                      <h4>Opthomology</h4>
-                      <p>20%</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-12  col-xl-8">
+            <div className="col-12 col-xl-12">
               <div className="card">
                 <div className="card-header">
                   <h4 className="card-title d-inline-block">
