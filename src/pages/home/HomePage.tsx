@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 import BaseLayout from "../../layouts/BaseLayout"
-import { empty_wallet, morning_img_01, profile_add, scissor } from "../../imagesPath/imagesPath"
-import StatsBox from "../../components/home/StatsBox"
 import StatsBoxs from "../../features/home/components/StatsBoxs"
 
 const HomePage = () => {
