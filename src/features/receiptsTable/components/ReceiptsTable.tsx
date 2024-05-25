@@ -8,13 +8,13 @@ const ReceiptsTable = () => {
         <div className="card">
           <div className="card-header">
             <h4 className="card-title d-inline-block">
-              Upcoming Appointments
+              الاستلامات
             </h4>{" "}
             <Link
               to="/appoinmentlist"
               className="patient-views float-start"
             >
-              Show all
+              عرض الكل
             </Link>
           </div>
           <div className="card-body p-0 table-dash">
@@ -22,18 +22,24 @@ const ReceiptsTable = () => {
               <table className="table mb-0 border-0 datatable custom-table">
                 <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Patient name</th>
-                    <th>Doctor</th>
-                    <th>Time</th>
+                    <th>ID</th>
+                    <th>رقم الملف</th>
+                    <th>تاريخ الاستلام</th>
+                    <th>ملاحظات</th>
                     <th />
                   </tr>
                 </thead>
                 <tbody>
-                  <ReceiptComponent />
-                  <ReceiptComponent />
-                  <ReceiptComponent />
-                  <ReceiptComponent />
+                  {
+                    [1, 2, 3, 4, 5].map(() => {
+                      return <ReceiptComponent
+                        id={1243324}
+                        receiving_date="19/2/2002"
+                        document_number={123478}
+                        notes="ملاحظات"
+                      />
+                    })
+                  }
                 </tbody>
               </table>
             </div>

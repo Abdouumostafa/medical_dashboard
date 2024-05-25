@@ -1,24 +1,25 @@
 import { user06 } from "../../imagesPath/imagesPath"
 import { Link } from "react-router-dom"
 
-const ReceiptComponent = () => {
+type IProps = {
+  id: number,
+  document_number: number,
+  receiving_date: string,
+  notes: string,
+  editClick?: any,
+}
+
+const ReceiptComponent = ({ id, document_number, receiving_date, notes, editClick }: IProps) => {
   return (
     <>
       <tr>
-        <td>R00001</td>
-        <td>Andrea Lalema</td>
-        <td className="table-image appoint-doctor">
-          <img
-            width={28}
-            height={28}
-            className="rounded-circle"
-            src={user06}
-            alt="#"
-          />
-          <h2>Dr.Jenny Smith</h2>
-        </td>
+        <td>{id}</td>
+        <td>{document_number}</td>
         <td className="appoint-time">
-          <span>12.05.2022 at </span>7.00 PM
+          <span>{receiving_date}</span>
+        </td>
+        <td className="table-image appoint-doctor">
+          <h2>{notes}</h2>
         </td>
         <td className="text-end">
           <div className="dropdown dropdown-action">
@@ -36,7 +37,7 @@ const ReceiptComponent = () => {
                 to="/appoinmentlist"
               >
                 <i className="fa-solid fa-pen-to-square m-r-5" />{" "}
-                Edit
+                تعدبل
               </Link>
               <Link
                 className="dropdown-item"
@@ -44,7 +45,7 @@ const ReceiptComponent = () => {
                 data-bs-toggle="modal"
                 data-bs-target="#delete_patient"
               >
-                <i className="fa fa-trash-alt m-r-5"></i> Delete
+                <i className="fa fa-trash-alt m-r-5"></i> حذف
               </Link>
             </div>
           </div>
