@@ -1,14 +1,14 @@
-export {default as logo} from '../assets/logo.jpg'
+export { default as logo } from '../assets/logo.jpg'
 
 // LOGIN PAGE
 export { default as login02 } from "../assets/login/login-02.png";
 export { default as loginlogo } from "../assets/login/login-logo.jpg";
 
 // LAYOUT 
-export {default as dashboard} from '../assets/layout/dashboard-icon.svg'
-export {default as patients} from '../assets/layout/patients-icon.svg'
-export {default as receipts} from '../assets/layout/receipts-icon.svg'
-export {default as logout} from '../assets/layout/logout-icon.svg'
+export { default as dashboard } from '../assets/layout/dashboard-icon.svg'
+export { default as patients } from '../assets/layout/patients-icon.svg'
+export { default as receipts } from '../assets/layout/receipts-icon.svg'
+export { default as logout } from '../assets/layout/logout-icon.svg'
 export { default as baricon } from "../assets/layout/bar-icon.svg";
 export { default as baricon1 } from "../assets/layout/bar-icon.svg";
 export { default as searchnormal } from "../assets/layout/search-normal.svg";
@@ -23,3 +23,4 @@ export { default as profile_add } from "../assets/home/profile_add.svg";
 export { default as empty_wallet } from "../assets/home/empty_wallet.svg";
 export { default as scissor } from "../assets/home/scissor.svg";
 export { default as morning_img_01 } from "../assets/home/morning_img_01.png";
+export { default as imagesend } from '../assets/imagesend.png'
