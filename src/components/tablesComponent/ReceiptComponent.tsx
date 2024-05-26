@@ -1,4 +1,3 @@
-import { user06 } from "../../imagesPath/imagesPath"
 import { Link } from "react-router-dom"
 
 type IProps = {
@@ -43,7 +42,7 @@ const ReceiptComponent = ({ id, document_number, receiving_date, notes, editClic
                 className="dropdown-item"
                 to="#"
                 data-bs-toggle="modal"
-                data-bs-target="#delete_patient"
+                data-bs-target="#delete_receipt"
               >
                 <i className="fa fa-trash-alt m-r-5"></i> حذف
               </Link>
