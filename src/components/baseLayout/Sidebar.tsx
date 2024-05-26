@@ -1,4 +1,4 @@
-import { dashboard, logout, noteicon1, patients, receipts } from "../../imagesPath/imagesPath";
+import { dashboard, logout, menu_icon08, noteicon1, patients, receipts } from "../../imagesPath/imagesPath";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -203,6 +203,42 @@ const Sidebar = (props: any) => {
                       to="/addstaff"
                     >
                       جميع الاستلامات
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="submenu">
+                <Link
+                  to="#"
+                  id="menu-item4"
+                  onClick={(e: any) => handleClick(e, "menu-item4", "menu-items4")}
+                >
+                  <span className="menu-side">
+                    <img src={menu_icon08} alt="" />
+                  </span>{" "}
+                  <span>الموظفين</span> <span className="menu-arrow" />
+                </Link>
+                <ul style={{ display: "none" }} className="menu-items4">
+                  <li>
+                    <Link
+                      className={
+                        props?.activeClassName === "staff-list"
+                          ? "active"
+                          : ""
+                      }
+                      to="/stafflist"
+                    >
+                      إضافة موظف جديد
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className={
+                        props?.activeClassName === "add-staff" ? "active" : ""
+                      }
+                      to="/addstaff"
+                    >
+                      جميع الموظفين
                     </Link>
                   </li>
                 </ul>
