@@ -1,3 +1,4 @@
+import { pathList } from "../../routes/routesPaths";
 import { dashboard, logout, menu_icon08, noteicon1, patients, receipts } from "../../imagesPath/imagesPath";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -58,7 +59,7 @@ const Sidebar = (props: any) => {
                   className={
                     props?.activeClassName === "chat" ? "active" : ""
                   }
-                  to="/chat"
+                  to={pathList.homePage}
                 >
                   <span className="menu-side">
                     <img src={dashboard} alt="" />
@@ -85,7 +86,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/patientslist"
+                      to={pathList.patientReports}
                     >
                       تقارير المرضى
                     </Link>
@@ -97,7 +98,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/addpatients"
+                      to={pathList.createPatient}
                     >
                       إنشاء مريض جديد
                     </Link>
@@ -109,7 +110,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/editpatients"
+                      to={pathList.allPatients}
                     >
                       جميع المرضى
                     </Link>
