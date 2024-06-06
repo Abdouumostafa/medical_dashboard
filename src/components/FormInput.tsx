@@ -4,10 +4,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"
 type IProps = {
   label: string,
   required: boolean,
-  type: string
+  type: string,
+  name: string,
+  id?: string,
+  onChange: (text: any) => any,
 }
 
-const FormInput = ({ label, required, type }: IProps) => {
+const FormInput = ({ label, required, type, name, id, onChange }: IProps) => {
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -26,7 +29,12 @@ const FormInput = ({ label, required, type }: IProps) => {
             type={passwordVisible ? "text" : "password"}
             className="form-control pass-input"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              onChange?.(e.target.value)
+              setPassword(e.target.value)
+            }}
+            name={name}
+            id={id}
           />
           <span
             className="toggle-password"
@@ -40,7 +48,13 @@ const FormInput = ({ label, required, type }: IProps) => {
           </span>
         </div>
         :
-        <input className="form-control" type={type} />
+        <input
+          className="form-control"
+          type={type}
+          onChange={(e) => onChange?.(e.target.value)}
+          id={id}
+          name={name}
+        />
       }
     </div>
   )

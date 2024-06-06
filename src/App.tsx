@@ -6,6 +6,9 @@ import PatientReports from "./pages/patients/PatientReports"
 import CreateNewPatient from "./pages/patients/CreateNewPatient"
 import AllPatients from "./pages/patients/AllPatients"
 import EditPatient from "./pages/patients/EditPatient"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,9 +29,9 @@ const router = createBrowserRouter(
 )
 function App() {
 
-  return <>
+  return <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
-  </>
+  </QueryClientProvider>
 }
 
 export default App
