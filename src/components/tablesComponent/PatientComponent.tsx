@@ -1,3 +1,4 @@
+import { pathList } from "../../routes/routesPaths"
 import { Link } from "react-router-dom"
 
 type IProps = {
@@ -41,7 +42,7 @@ const PatientComponent = ({ id, image, name, age, gander, document_number, recei
           <div className="dropdown-menu dropdown-menu-end">
             <Link
               className="dropdown-item"
-              to="/editpatients"
+              to={pathList.editPatient}
             >
               <i className="fa-solid fa-pen-to-square m-r-5" />{" "}
               تعديل

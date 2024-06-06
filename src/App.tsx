@@ -5,6 +5,7 @@ import HomePage from "./pages/home/HomePage"
 import PatientReports from "./pages/patients/PatientReports"
 import CreateNewPatient from "./pages/patients/CreateNewPatient"
 import AllPatients from "./pages/patients/AllPatients"
+import EditPatient from "./pages/patients/EditPatient"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route element={<PatientReports />} path={pathList.patientReports} />
       <Route element={<CreateNewPatient />} path={pathList.createPatient} />
       <Route element={<AllPatients />} path={pathList.allPatients} />
+      <Route element={<EditPatient />} path={pathList.editPatient} />
     </>
   )
 )

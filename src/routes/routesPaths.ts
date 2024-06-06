@@ -8,4 +8,5 @@ export const pathList = {
     patientReports: '/patient_reports',
     createPatient: '/create_new_patient',
     allPatients: '/all_patients',
+    editPatient: '/edit_patient',
 }

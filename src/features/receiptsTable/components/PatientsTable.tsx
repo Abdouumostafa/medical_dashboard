@@ -1,6 +1,7 @@
 import { user06 } from "../../../imagesPath/imagesPath"
 import PatientComponent from "../../../components/tablesComponent/PatientComponent"
 import { Link } from "react-router-dom"
+import { pathList } from "../../../routes/routesPaths"
 
 const PatientsTable = () => {
   return (
@@ -12,7 +13,7 @@ const PatientsTable = () => {
               المرضى{" "}
             </h4>{" "}
             <Link
-              to="/editpatients"
+              to={pathList.allPatients}
               className="float-start patient-views"
             >
               عرض الكل
