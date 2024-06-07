@@ -227,7 +227,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/stafflist"
+                      to={pathList.createUser}
                     >
                       إضافة موظف جديد
                     </Link>
@@ -237,7 +237,7 @@ const Sidebar = (props: any) => {
                       className={
                         props?.activeClassName === "add-staff" ? "active" : ""
                       }
-                      to="/addstaff"
+                      to={pathList.allUsers}
                     >
                       جميع الموظفين
                     </Link>
