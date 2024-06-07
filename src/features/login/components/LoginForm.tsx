@@ -5,6 +5,8 @@ import { pathList } from '../../../routes/routesPaths'
 import { useState } from 'react'
 import LoginUser from '../services/LoginUser'
 import { useMutation } from '@tanstack/react-query'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
   const navigate = useNavigate()
@@ -24,20 +26,40 @@ const LoginForm = () => {
       navigate(pathList.homePage);
       location.reload();
     },
+    onError: (error) => {
+      switch (true) {
+        // @ts-ignore
+        case error?.response?.data?.message[0] === 'invalid email':
+          toast.error("يرجى إدخال عنوان بريد إلكتروني صالح")
+          break;
+        // @ts-ignore
+        case error?.response?.data?.message[0] === 'invalid password':
+          toast.error("كلمة المرور الخاصة بك خاطئة")
+          break;
+      }
+    }
   })
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // if (!data.email) {
-    //   toast.warn("Please Enter Your Email");
-    // }
-    // if (!data.password) {
-    //   toast.warn("Please Enter Your Password");
-    // }
+
+    switch (true) {
+      case formData.email === '':
+        toast.error("رجاءا أدخل بريدك الإلكتروني");
+        break;
+      case formData.password === '':
+        toast.error("من فضلك أدخل رقمك السري");
+        break;
+      case formData.email === '' && formData.password === '':
+        toast.error("يرجى إدخال البريد الإلكتروني وكلمة المرور");
+        break;
+    }
+
     loginUser.mutate();
   };
   return (
     <>
+      <ToastContainer />
       <div className="col-lg-6 login-wrap-bg">
         <div className="login-wrapper">
           <div className="loginbox">
