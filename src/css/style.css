@@ -1337,10 +1337,10 @@ ul.user-menu{
     max-width: 100%;
     flex: 0 0 100%;
 }
-.login-wrapper .loginbox .login-right .login-right-wrap .form-group {
+.form-group {
 	position: relative;
 }
-.login-wrapper .loginbox .login-right .login-right-wrap .form-group label {
+.form-group label {
 	font-size: 12px;
 	color: #333448;
 	font-weight: 500;
@@ -6522,16 +6522,33 @@ a.status-grey {
     border: 2px solid rgba(46, 55, 164, 0.1);
     border-radius: 10px;
 }
+
+.doctor-submit{
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	justify-content: end;
+}
+
 .doctor-submit .btn-primary {
 	min-width: 131px;
 	font-size: 14px;
 	font-weight: 500;
 	border-radius: 12px;
 	padding: 10px 15px;
+	border-color: transparent;
+	background-color: #2E37A4;
+	border-radius: 8px;
+}
+
+.doctor-submit .btn-primary:hover{
+	background-color: #028ee1;
+	border: 1px solid #028ee1
 }
 .doctor-submit .cancel-form {
 	background: rgba(51, 52, 72, 0.05);
 	color: #333448;
+	border: none;
 }
 .doctor-submit .cancel-form:hover {
 	background: #2E37A4;
