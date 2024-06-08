@@ -19,15 +19,19 @@ const CreateNewUserForm = () => {
 		is_admin: ''
 	})
 
+	console.log(formData.is_admin)
+	console.log(formData.job_title)
+
 	const postUser = useMutation({
 		mutationFn: () => {
 			return PostNewUser(formData)
 		},
 		onSuccess: () => {
-			toast.success('تم اضافة مستخدم جديد بنجاح')
 			navigation(pathList.homePage)
+			toast.success('تم اضافة مستخدم جديد بنجاح')
 		},
 		onError: (error) => {
+			// @ts-ignore
 			toast.error(error?.response?.data?.message)
 		}
 	})
@@ -139,13 +143,13 @@ const CreateNewUserForm = () => {
 									setFormData((prev: any) => {
 										return {
 											...prev,
-											is_admin: text
+											is_admin: text.target.value
 										}
 									})
 								}}
 							>
-								<option value={'false'}>لا</option>
-								<option value={'true'}>نعم</option>
+								<option value={`${false}`}>لا</option>
+								<option value={`${true}`}>نعم</option>
 							</select>
 						</div>
 					</div>
