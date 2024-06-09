@@ -1,10 +1,13 @@
 import { pathList } from "../../../routes/routesPaths"
 import FormInput from "../../../components/FormInput"
-import { ToastContainer } from "react-toastify"
-import { Link } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { useMutation } from "react-query"
+import createPatient from "../services/createPatient"
 
 const CreatePatientForm = () => {
+  const navigation = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     age: '',
@@ -12,11 +15,31 @@ const CreatePatientForm = () => {
     gender: 'ذكر'
   })
 
-  console.log(formData)
+  const createPatientMutation = useMutation({
+    mutationFn: () => {
+      return createPatient(formData)
+    },
+    onSuccess: () => {
+      setTimeout(() => {
+        navigation(pathList.allPatients)
+      }, 1000);
+      toast.success('تم اضافة مريض جديد بنجاح')
+    },
+    onError: (error) => {
+      // @ts-ignore
+      toast.error(error?.response?.data?.message)
+    }
+  })
+
+  const onSubmitForm = (e: any) => {
+    e.preventDefault()
+    createPatientMutation.mutate()
+  }
+
   return (
     <>
       <ToastContainer />
-      <form>
+      <form onSubmit={onSubmitForm}>
         <div className="row">
           <div className="col-12">
             <div className="form-heading">

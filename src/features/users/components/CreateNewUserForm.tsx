@@ -26,7 +26,7 @@ const CreateNewUserForm = () => {
     onSuccess: () => {
       setTimeout(() => {
         navigation(pathList.allUsers)
-      }, 2000);
+      }, 1000);
       toast.success('تم اضافة مستخدم جديد بنجاح')
     },
     onError: (error) => {
