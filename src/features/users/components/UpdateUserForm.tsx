@@ -1,22 +1,24 @@
 import { useQuery } from "@tanstack/react-query"
 import FormInput from "../../../components/FormInput"
 import { pathList } from "../../../routes/routesPaths"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import getSingleUser from "../services/getSingleUser"
 import Loading from "../../../components/Loading"
 import { useState } from "react"
+import updateSingleUser from "../services/updateSingleUser"
+import { useMutation } from "react-query"
+import { toast } from "react-toastify"
 
 const UpdateUserForm = () => {
+  const navigation = useNavigate()
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     job_title: '',
     national_id: '',
-    password: '',
     is_admin: ''
   })
 
-  console.log(formData)
   const { id } = useParams()
 
   const { data, isLoading } = useQuery({
@@ -24,12 +26,37 @@ const UpdateUserForm = () => {
     queryFn: () => getSingleUser(id)
   })
 
+  const userData = data?.data?.data
+
+  const editSingleUser = useMutation({
+    mutationFn: () => {
+      return updateSingleUser(id, {
+        username: formData?.username ? formData.username : userData.username,
+        email: formData?.email ? formData.email : userData.email,
+        job_title: formData?.job_title ? formData.job_title : userData.job_title,
+        national_id: formData?.national_id ? formData.national_id : userData.national_id,
+        is_admin: formData?.is_admin ? formData.is_admin : userData.is_admin,
+      })
+    }, onSuccess: () => {
+      toast.success('تم تعديل المستخدم')
+      setTimeout(() => {
+        navigation(pathList.allUsers)
+      }, 1000)
+    },
+
+  })
+
+  const onSubmitForm = (e: any) => {
+    e.preventDefault()
+    editSingleUser.mutate()
+  }
+
   return (
     <>
       {isLoading ?
         <Loading />
         :
-        <form>
+        <form onSubmit={onSubmitForm}>
           <div className="row">
             <div className="col-12">
               <div className="form-heading">
@@ -41,7 +68,7 @@ const UpdateUserForm = () => {
               required
               type="text"
               name="username"
-              defaultValue={data?.data?.data?.username}
+              defaultValue={userData?.username}
               onChange={
                 (text) => {
                   setFormData((prev) => {
@@ -58,7 +85,7 @@ const UpdateUserForm = () => {
               required
               type="email"
               name="email"
-              defaultValue={data?.data?.data?.email}
+              defaultValue={userData?.email}
               onChange={
                 (text) => {
                   setFormData((prev) => {
@@ -75,7 +102,7 @@ const UpdateUserForm = () => {
               required
               type="text"
               name="job_title"
-              defaultValue={data?.data?.data?.job_title}
+              defaultValue={userData?.job_title}
               onChange={
                 (text) => {
                   setFormData((prev) => {
@@ -92,7 +119,7 @@ const UpdateUserForm = () => {
               required
               type="number"
               name="national_id"
-              defaultValue={data?.data?.data?.national_id}
+              defaultValue={userData?.national_id}
               onChange={
                 (text) => {
                   setFormData((prev) => {
@@ -122,7 +149,7 @@ const UpdateUserForm = () => {
                     })
                   }}
                 >
-                  {data?.data?.data?.is_admin === true ?
+                  {userData?.is_admin === true ?
                     <>
                       <option value={JSON.parse(`${true}`)}>نعم</option>
                       <option value={JSON.parse(`${false}`)}>لا</option>
