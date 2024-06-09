@@ -7,8 +7,10 @@ import deleteUser from "../services/deleteUser"
 import { useMutation } from "react-query"
 import { useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 const AllUsersComponent = () => {
+  const navigation = useNavigate()
 
   const { data, isLoading } = useQuery({
     queryKey: ['allUsers'],
@@ -66,6 +68,7 @@ const AllUsersComponent = () => {
                           job_title={job_title}
                           is_admin={is_admin}
                           onDeleteClick={() => setGlobalId(pk)}
+                          onEditClick={() => navigation(`/home/update_user/${pk}`)}
                         />
                       })
                     }

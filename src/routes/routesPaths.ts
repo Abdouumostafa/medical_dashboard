@@ -13,5 +13,5 @@ export const pathList = {
     // Users
     allUsers: '/all_users',
     createUser: '/create_new_user',
-    updateUser: '/home/update_user'
+    updateUser: '/home/update_user/:id',
 }

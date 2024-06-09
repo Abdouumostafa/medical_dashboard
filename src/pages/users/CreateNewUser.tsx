@@ -10,7 +10,6 @@ const CreateNewUser = () => {
       <>
         <div className="page-wrapper">
           <div className="content">
-            {/* /Page Header */}
             <div className="row">
               <div className="col-sm-12">
                 <div className="card">

@@ -41,13 +41,13 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin, onDelet
             <i className="fa fa-ellipsis-v" />
           </Link>
           <div className="dropdown-menu dropdown-menu-end">
-            <Link
+            <button
               className="dropdown-item"
-              to="/appoinmentlist"
+              onClick={onEditClick}
             >
               <i className="fa-solid fa-pen-to-square m-r-5" />{" "}
               تعدبل
-            </Link>
+            </button>
             <Link
               className="dropdown-item"
               to="#"

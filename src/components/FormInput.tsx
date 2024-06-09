@@ -8,9 +8,10 @@ type IProps = {
   name: string,
   id?: string,
   onChange: (text: any) => any,
+  defaultValue?: any
 }
 
-const FormInput = ({ label, required, type, name, id, onChange }: IProps) => {
+const FormInput = ({ label, required, type, name, id, onChange, defaultValue }: IProps) => {
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -54,6 +55,7 @@ const FormInput = ({ label, required, type, name, id, onChange }: IProps) => {
           onChange={(e) => onChange?.(e.target.value)}
           id={id}
           name={name}
+          defaultValue={defaultValue}
         />
       }
     </div>
