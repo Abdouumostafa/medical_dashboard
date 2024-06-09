@@ -1,12 +1,10 @@
 import CreateNewUserForm from "../../features/users/components/CreateNewUserForm"
-import Navbar from "../../components/baseLayout/Navbar"
-import Sidebar from "../../components/baseLayout/Sidebar"
+import BaseLayout from "../../layouts/BaseLayout"
 
 const CreateNewUser = () => {
   return (
     <div>
-      <Navbar />
-      <Sidebar id='menu-item6' id1='menu-items6' activeClassName='add-department' />
+      <BaseLayout />
       <>
         <div className="page-wrapper">
           <div className="content">
@@ -22,7 +20,6 @@ const CreateNewUser = () => {
           </div>
         </div>
       </>
-
     </div>
   )
 }

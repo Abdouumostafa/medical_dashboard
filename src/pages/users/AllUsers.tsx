@@ -1,12 +1,10 @@
 import AllUsersComponent from "../../features/users/components/AllUsersComponent"
-import Navbar from "../../components/baseLayout/Navbar"
-import Sidebar from "../../components/baseLayout/Sidebar"
+import BaseLayout from "../../layouts/BaseLayout"
 
 const AllUsers = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <BaseLayout />
       <div className="page-wrapper">
         <div className="content">
           <AllUsersComponent />

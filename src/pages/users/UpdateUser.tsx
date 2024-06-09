@@ -1,12 +1,10 @@
 import UpdateUserForm from "../../features/users/components/UpdateUserForm"
-import Navbar from "../../components/baseLayout/Navbar"
-import Sidebar from "../../components/baseLayout/Sidebar"
+import BaseLayout from "../../layouts/BaseLayout"
 
 const UpdateUser = () => {
   return (
     <>
-      <Navbar />
-      <Sidebar />
+      <BaseLayout />
       <div className="page-wrapper">
         <div className="content">
           <div className="row">
