@@ -1,34 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 type IProps = {
-  username: string,
-  email: string,
-  job_title: string,
-  national_id: string,
-  is_admin: boolean,
+  name: string,
+  age: number,
+  gender: string,
+  document_number: number,
   onEditClick?: any,
   onDeleteClick?: any
 }
-
-const UsersTable = ({ username, email, job_title, national_id, is_admin, onDeleteClick, onEditClick }: IProps) => {
+const PatientsTable = ({ name, age, gender, document_number, onDeleteClick, onEditClick }: IProps) => {
   return (
     <tr>
-      <td>{username}</td>
-      <td>{email}</td>
-      <td>{job_title}</td>
+      <td>{name}</td>
+      <td>{age}</td>
+      <td>{gender}</td>
       <td className="appoint-time">
-        <span>{national_id}</span>
-      </td>
-      <td>
-        {is_admin === true ?
-          <div className="custom-badge status-green ">
-            ادمن
-          </div>
-          :
-          <div className="custom-badge status-pink ">
-            موظف
-          </div>
-        }
+        <span>{document_number}</span>
       </td>
       <td className="text-end">
         <div className="dropdown dropdown-action">
@@ -52,7 +39,7 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin, onDelet
               className="dropdown-item"
               to="#"
               data-bs-toggle="modal"
-              data-bs-target="#delete_user"
+              data-bs-target="#delete_patient"
               onClick={onDeleteClick}
             >
               <i className="fa fa-trash-alt m-r-5"></i> حذف
@@ -64,4 +51,4 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin, onDelet
   )
 }
 
-export default UsersTable
+export default PatientsTable

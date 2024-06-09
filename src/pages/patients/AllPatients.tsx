@@ -1,3 +1,4 @@
+import AllPatientsComponent from "../../features/patients/components/AllPatientsComponent"
 import BaseLayout from "../../layouts/BaseLayout"
 
 const AllPatients = () => {
@@ -6,6 +7,7 @@ const AllPatients = () => {
       <BaseLayout />
       <div className="page-wrapper">
         <div className="content">
+          <AllPatientsComponent />
         </div>
       </div>
     </>
