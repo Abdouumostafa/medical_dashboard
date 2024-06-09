@@ -5,10 +5,12 @@ type IProps = {
   age: number,
   gender: string,
   document_number: number,
+  added_at: string,
+  date_order_delivered: string,
   onEditClick?: any,
   onDeleteClick?: any
 }
-const PatientsTable = ({ name, age, gender, document_number, onDeleteClick, onEditClick }: IProps) => {
+const PatientsTable = ({ name, age, gender, document_number, added_at, date_order_delivered, onDeleteClick, onEditClick }: IProps) => {
   return (
     <tr>
       <td>{name}</td>
@@ -16,6 +18,12 @@ const PatientsTable = ({ name, age, gender, document_number, onDeleteClick, onEd
       <td>{gender}</td>
       <td className="appoint-time">
         <span>{document_number}</span>
+      </td>
+      <td className="appoint-time">
+        <span>{added_at}</span>
+      </td>
+      <td className="appoint-time">
+        <span>{date_order_delivered}</span>
       </td>
       <td className="text-end">
         <div className="dropdown dropdown-action">

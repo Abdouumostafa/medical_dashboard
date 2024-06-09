@@ -1,59 +1,73 @@
 import DeleteModal from "../../../components/DeleteModal"
-import Loading from "@/components/Loading"
+import Loading from "../../../components/Loading"
 import { ToastContainer } from "react-toastify"
 import PatientsTable from "./PatientsTable"
+import { useQuery } from "@tanstack/react-query"
+import getAllPatients from "../services/getAllPatients"
+import { format } from 'date-fns'
 
 const AllPatientsComponent = () => {
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['allPatients'],
+    queryFn: getAllPatients
+  })
+
+  const patientData = data?.data?.data
   return (<>
-    {/* {isLoading ?
+    {isLoading ?
       <Loading />
-      : */}
-    <div className="row">
-      <ToastContainer />
-      <div className="col-12 col-xl-12">
-        <div className="card">
-          <div className="card-header">
-            <h4 className="card-title d-inline-block">
-              جميع المرضى
-            </h4>
-          </div>
-          <div className="card-body p-0 table-dash">
-            <div className="table-responsive">
-              <table className="table mb-0 border-0 datatable custom-table">
-                <thead>
-                  <tr>
-                    <th>الاسم</th>
-                    <th>العمر</th>
-                    <th>النوع</th>
-                    <th>رقم الملف</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    [32, 32, 32324, 32].map(({ pk, email, job_title, username, national_id, is_admin }: any) => {
-                      return <PatientsTable
-                        key={'pk'}
-                        name={'username'}
-                        age={'email'}
-                        document_number={'national_id'}
-                        gender={'job_title'}
-                      // onDeleteClick={() => setGlobalId(pk)}
-                      // onEditClick={() => navigation(`/home/update_user/${pk}`)}
-                      />
-                    })
-                  }
-                </tbody>
-              </table>
+      :
+      <div className="row">
+        <ToastContainer />
+        <div className="col-12 col-xl-12">
+          <div className="card">
+            <div className="card-header">
+              <h4 className="card-title d-inline-block">
+                جميع المرضى
+              </h4>
+            </div>
+            <div className="card-body p-0 table-dash">
+              <div className="table-responsive">
+                <table className="table mb-0 border-0 datatable custom-table">
+                  <thead>
+                    <tr>
+                      <th>الاسم</th>
+                      <th>العمر</th>
+                      <th>النوع</th>
+                      <th>رقم الملف</th>
+                      <th>تاريخ الاضافة</th>
+                      <th>اخر تاريخ استلام</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      patientData.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
+                        return <PatientsTable
+                          key={id}
+                          name={name}
+                          age={age}
+                          document_number={document_number}
+                          added_at={format(added_at, 'dd/MM/yyyy')}
+                          date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
+                          gender={gender}
+                        // onDeleteClick={() => setGlobalId(pk)}
+                        // onEditClick={() => navigation(`/home/update_user/${pk}`)}
+                        />
+                      })
+                    }
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
+        <DeleteModal
+          modalId="delete_patient"
+        // onDeletionAction={() => deleteUserMutation.mutate()}
+        />
       </div>
-      <DeleteModal
-        modalId="delete_patient"
-      // onDeletionAction={() => deleteUserMutation.mutate()}
-      />
-    </div>
-    {/* } */}
+    }
   </>
   )
 }
