@@ -2,21 +2,40 @@ import { useQuery } from "@tanstack/react-query"
 import UsersTable from "./UsersTable"
 import getAllUsers from "../services/gatAllUsers"
 import Loading from "../../../components/Loading"
+import DeleteModal from "../../../components/DeleteModal"
+import deleteUser from "../services/deleteUser"
+import { useMutation } from "react-query"
+import { useState } from "react"
+import { ToastContainer, toast } from "react-toastify"
 
 const AllUsersComponent = () => {
+
   const { data, isLoading } = useQuery({
     queryKey: ['allUsers'],
     queryFn: getAllUsers
   })
   const userData = data?.data?.data
 
-  console.log(userData)
+  const [globalId, setGlobalId] = useState<any>()
+
+  const deleteUserMutation = useMutation({
+    mutationFn: () => {
+      return deleteUser(globalId)
+    },
+    onSuccess: () => {
+      toast.success('تم حذف المستخدم')
+      setTimeout(() => {
+        location.reload()
+      }, 1000);
+    }
+  })
 
   return (<>
     {isLoading ?
       <Loading />
       :
       <div className="row">
+        <ToastContainer />
         <div className="col-12 col-xl-12">
           <div className="card">
             <div className="card-header">
@@ -45,7 +64,9 @@ const AllUsersComponent = () => {
                           email={email}
                           national_id={national_id}
                           job_title={job_title}
-                          is_admin={is_admin} />
+                          is_admin={is_admin}
+                          onDeleteClick={() => setGlobalId(pk)}
+                        />
                       })
                     }
                   </tbody>
@@ -54,6 +75,10 @@ const AllUsersComponent = () => {
             </div>
           </div>
         </div>
+        <DeleteModal
+          modalId="delete_user"
+          onDeletionAction={() => deleteUserMutation.mutate()}
+        />
       </div>
     }</>
   )

@@ -21,13 +21,13 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin, onDelet
       </td>
       <td>
         {is_admin === true ?
-          <button className="custom-badge status-green ">
+          <div className="custom-badge status-green ">
             ادمن
-          </button>
+          </div>
           :
-          <button className="custom-badge status-pink ">
+          <div className="custom-badge status-pink ">
             موظف
-          </button>
+          </div>
         }
       </td>
       <td className="text-end">
@@ -52,7 +52,8 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin, onDelet
               className="dropdown-item"
               to="#"
               data-bs-toggle="modal"
-              data-bs-target="#delete_receipt"
+              data-bs-target="#delete_user"
+              onClick={onDeleteClick}
             >
               <i className="fa fa-trash-alt m-r-5"></i> حذف
             </Link>

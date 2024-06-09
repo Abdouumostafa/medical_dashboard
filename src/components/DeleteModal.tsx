@@ -3,9 +3,10 @@ import { Link } from "react-router-dom"
 
 type IProps = {
   modalId: string,
+  onDeletionAction?: () => any
 }
 
-const DeleteModal = ({ modalId }: IProps) => {
+const DeleteModal = ({ modalId, onDeletionAction }: IProps) => {
   return (
     <div id={modalId} className="modal fade delete-modal" role="dialog">
       <div className="modal-dialog modal-dialog-centered">
@@ -18,7 +19,7 @@ const DeleteModal = ({ modalId }: IProps) => {
               <Link to="#" className="btn btn-white me-2" data-bs-dismiss="modal">
                 غلق
               </Link>
-              <button type="submit" className="btn btn-danger">
+              <button className="btn btn-danger" onClick={() => onDeletionAction?.()}>
                 حذف
               </button>
             </div>

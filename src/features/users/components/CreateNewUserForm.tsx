@@ -24,7 +24,9 @@ const CreateNewUserForm = () => {
       return PostNewUser(formData)
     },
     onSuccess: () => {
-      navigation(pathList.homePage)
+      setTimeout(() => {
+        navigation(pathList.allUsers)
+      }, 2000);
       toast.success('تم اضافة مستخدم جديد بنجاح')
     },
     onError: (error) => {
