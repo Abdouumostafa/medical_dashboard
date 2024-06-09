@@ -10945,3 +10945,24 @@ font-weight: 500 !important;
 	left: 15px;
 	top: 20%;
   }
+
+  .loadingParent{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50vh;
+  }
+
+.loadingAnimation {
+	animation: Loading 1s infinite linear;
+  }
+  
+  @keyframes Loading {
+	0% {
+	  transform: rotate(0deg);
+	}
+  
+	100% {
+	  transform: rotate(360deg);
+	}
+  }

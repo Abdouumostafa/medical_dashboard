@@ -5,10 +5,12 @@ type IProps = {
   email: string,
   job_title: string,
   national_id: string,
-  is_admin: boolean
+  is_admin: boolean,
+  onEditClick?: any,
+  onDeleteClick?: any
 }
 
-const UsersTable = ({ username, email, job_title, national_id, is_admin }: IProps) => {
+const UsersTable = ({ username, email, job_title, national_id, is_admin, onDeleteClick, onEditClick }: IProps) => {
   return (
     <tr>
       <td>{username}</td>
@@ -20,11 +22,11 @@ const UsersTable = ({ username, email, job_title, national_id, is_admin }: IProp
       <td>
         {is_admin === true ?
           <button className="custom-badge status-green ">
-            Non Urgent
+            ادمن
           </button>
           :
           <button className="custom-badge status-pink ">
-            Non Urgent
+            موظف
           </button>
         }
       </td>
