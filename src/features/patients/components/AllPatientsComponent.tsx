@@ -1,16 +1,33 @@
 import DeleteModal from "../../../components/DeleteModal"
 import Loading from "../../../components/Loading"
-import { ToastContainer } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import PatientsTable from "./PatientsTable"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import getAllPatients from "../services/getAllPatients"
 import { format } from 'date-fns'
+import deletePatient from "../services/deletePatient"
+import { useState } from "react"
 
 const AllPatientsComponent = () => {
-
+  // Get All Patients
   const { data, isLoading } = useQuery({
     queryKey: ['allPatients'],
     queryFn: getAllPatients
+  })
+
+  // Delete Patient
+  const [globalId, setGlobalId] = useState()
+
+  const deletePatientMutation = useMutation({
+    mutationFn: () => {
+      return deletePatient(globalId)
+    },
+    onSuccess: () => {
+      toast.success('تم حذف المريض')
+      setTimeout(() => {
+        location.reload()
+      }, 1000);
+    },
   })
 
   const patientData = data?.data?.data
@@ -51,7 +68,7 @@ const AllPatientsComponent = () => {
                           added_at={format(added_at, 'dd/MM/yyyy')}
                           date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
                           gender={gender}
-                        // onDeleteClick={() => setGlobalId(pk)}
+                          onDeleteClick={() => setGlobalId(id)}
                         // onEditClick={() => navigation(`/home/update_user/${pk}`)}
                         />
                       })
@@ -64,7 +81,7 @@ const AllPatientsComponent = () => {
         </div>
         <DeleteModal
           modalId="delete_patient"
-        // onDeletionAction={() => deleteUserMutation.mutate()}
+          onDeletionAction={() => deletePatientMutation.mutate()}
         />
       </div>
     }
