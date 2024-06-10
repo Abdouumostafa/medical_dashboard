@@ -1,19 +1,59 @@
 import { pathList } from "../../../routes/routesPaths"
 import FormInput from "../../../components/FormInput"
-import { Link, useParams } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
-import { useQuery } from "@tanstack/react-query"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import getSinglePatient from "../services/getSinglePatient"
 import Loading from "../../../components/Loading"
+import { useState } from "react"
+import updatePatient from "../services/putPatient"
 
 const UpdatePatientComponent = () => {
+  const navigation = useNavigate()
+
   const { id } = useParams()
 
+  // Get Single Patient
   const { data, isLoading } = useQuery({
     queryKey: ['patient', id],
     queryFn: () => getSinglePatient(id)
   })
   const patientData = data?.data?.data
+
+  // Update User
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    document_number: '',
+    gender: ''
+  })
+
+  const updatePatientMutation = useMutation({
+    mutationFn: () => {
+      return updatePatient(id, {
+        name: formData?.name ? formData.name : patientData?.name,
+        age: formData?.age ? formData.age : patientData?.age,
+        document_number: formData?.document_number ? formData.document_number : patientData?.document_number,
+        gender: formData?.gender ? formData.gender : patientData?.gender,
+      })
+    },
+    onSuccess: () => {
+      // @ts-ignore
+      toast.success('تم تعديل بيانات المريض')
+      setTimeout(() => {
+        navigation(pathList.allPatients)
+      }, 1000);
+    },
+    onError: (error) => {
+      // @ts-ignore
+      toast.error(error)
+    }
+  })
+
+  const onSubmitForm = (e: any) => {
+    e.preventDefault()
+    updatePatientMutation.mutate()
+  }
 
   return (
     <>{isLoading ?
@@ -21,7 +61,7 @@ const UpdatePatientComponent = () => {
       :
       <>
         <ToastContainer />
-        <form>
+        <form onSubmit={onSubmitForm}>
           <div className="row">
             <div className="col-12">
               <div className="form-heading">
@@ -85,8 +125,8 @@ const UpdatePatientComponent = () => {
                   النوع (الجنس)<span className="login-danger">*</span>
                 </label>
                 <select
-                  name="is_admin"
-                  id="is_admin"
+                  name="gender"
+                  id="gender"
                   className=" w-100 mb-5"
                   onChange={(text) => {
                     setFormData((prev: any) => {
