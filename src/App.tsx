@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import CreateNewUser from "./pages/users/CreateNewUser"
 import AllUsers from "./pages/users/AllUsers"
 import UpdateUser from "./pages/users/UpdateUser"
+import ProtectedRoutes from "./routes/ProtectedRoutes"
 
 const queryClient = new QueryClient()
 
@@ -20,18 +21,65 @@ const router = createBrowserRouter(
       <Route element={<LoginPage />} path={pathList.login} />
 
       {/* Home Page */}
-      <Route element={<HomePage />} path={pathList.homePage} />
+      <Route element={
+        <ProtectedRoutes>
+          <HomePage />
+        </ProtectedRoutes>
+      }
+        path={pathList.homePage} />
 
       {/* Patients */}
-      <Route element={<PatientReports />} path={pathList.patientReports} />
-      <Route element={<CreateNewPatient />} path={pathList.createPatient} />
-      <Route element={<AllPatients />} path={pathList.allPatients} />
-      <Route element={<EditPatient />} path={pathList.editPatient} />
+      <Route element={
+        <ProtectedRoutes>
+          <PatientReports />
+        </ProtectedRoutes>
+      }
+        path={pathList.patientReports} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <CreateNewPatient />
+        </ProtectedRoutes>
+      }
+        path={pathList.createPatient} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <AllPatients />
+        </ProtectedRoutes>
+      }
+        path={pathList.allPatients} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <EditPatient />
+        </ProtectedRoutes>
+      }
+        path={pathList.editPatient} />
+
 
       {/* Users */}
-      <Route element={<CreateNewUser />} path={pathList.createUser} />
-      <Route element={<AllUsers />} path={pathList.allUsers} />
-      <Route element={<UpdateUser />} path={pathList.updateUser} />
+      <Route element={
+        <ProtectedRoutes>
+          <CreateNewUser />
+        </ProtectedRoutes>
+      }
+        path={pathList.createUser} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <AllUsers />
+        </ProtectedRoutes>
+      }
+        path={pathList.allUsers} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <UpdateUser />
+        </ProtectedRoutes>
+      }
+        path={pathList.updateUser} />
+
     </>
   )
 )
