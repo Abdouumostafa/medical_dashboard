@@ -1,10 +1,10 @@
 import { pathList } from "../../routes/routesPaths";
 import { dashboard, logout, menu_icon08, noteicon1, patients, receipts } from "../../imagesPath/imagesPath";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = (props: any) => {
-  const [sidebar, setSidebar] = useState("");
+  const [sidebar, _] = useState("");
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>, item: string, item1: string): void => {
     const div = document.querySelector<HTMLDivElement>(`#${item}`);
@@ -43,6 +43,13 @@ const Sidebar = (props: any) => {
   const expandMenuOpen = () => {
     document.body.classList.add("expand-menu");
   };
+
+  const navigation = useNavigate()
+  const logoutClick = () => {
+    localStorage.clear()
+    navigation('/')
+    location.reload()
+  }
   return (
     <>
       <div className="sidebar" id="sidebar">
@@ -259,7 +266,7 @@ const Sidebar = (props: any) => {
               </li>
             </ul>
             <div className="logout-btn">
-              <Link to="/">
+              <Link to={''} onClick={logoutClick}>
                 <span className="menu-side">
                   <img src={logout} alt="" />
                 </span>{" "}
