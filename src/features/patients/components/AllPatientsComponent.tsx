@@ -7,13 +7,17 @@ import getAllPatients from "../services/getAllPatients"
 import { format } from 'date-fns'
 import deletePatient from "../services/deletePatient"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const AllPatientsComponent = () => {
+  const navigation = useNavigate()
+
   // Get All Patients
   const { data, isLoading } = useQuery({
     queryKey: ['allPatients'],
     queryFn: getAllPatients
   })
+  const patientData = data?.data?.data
 
   // Delete Patient
   const [globalId, setGlobalId] = useState()
@@ -30,7 +34,6 @@ const AllPatientsComponent = () => {
     },
   })
 
-  const patientData = data?.data?.data
   return (<>
     {isLoading ?
       <Loading />
@@ -69,7 +72,7 @@ const AllPatientsComponent = () => {
                           date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
                           gender={gender}
                           onDeleteClick={() => setGlobalId(id)}
-                        // onEditClick={() => navigation(`/home/update_user/${pk}`)}
+                          onEditClick={() => navigation(`/home/edit_patient/${id}`)}
                         />
                       })
                     }
