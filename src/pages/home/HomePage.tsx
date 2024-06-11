@@ -2,7 +2,7 @@ import BaseLayout from "../../layouts/BaseLayout"
 import StatsBoxs from "../../features/home/components/StatsBoxs"
 import ReceiptsTable from "../../features/receiptsTable/components/ReceiptsTable"
 import DeleteModal from "../../components/DeleteModal"
-import PatientsTable from "../../features/receiptsTable/components/PatientsTable"
+import AllPatientsComponent from "../../features/patients/components/AllPatientsComponent"
 
 const HomePage = () => {
   return (
@@ -12,7 +12,7 @@ const HomePage = () => {
         <div className="content">
           <StatsBoxs />
           <ReceiptsTable />
-          <PatientsTable />
+          <AllPatientsComponent isHome={true} />
         </div>
         <DeleteModal modalId="delete_receipt" />
         <DeleteModal modalId="delete_patient" />

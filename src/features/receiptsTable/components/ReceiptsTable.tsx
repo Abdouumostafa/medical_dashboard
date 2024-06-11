@@ -31,8 +31,9 @@ const ReceiptsTable = () => {
                 </thead>
                 <tbody>
                   {
-                    [1, 2, 3, 4, 5].map(() => {
+                    [1, 2, 3, 4, 5].map((_, index) => {
                       return <ReceiptComponent
+                        key={index}
                         id={1243324}
                         receiving_date="19/2/2002"
                         document_number={123478}

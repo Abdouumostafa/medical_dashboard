@@ -7,9 +7,10 @@ import getAllPatients from "../services/getAllPatients"
 import { format } from 'date-fns'
 import deletePatient from "../services/deletePatient"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { pathList } from "../../../routes/routesPaths"
 
-const AllPatientsComponent = () => {
+const AllPatientsComponent = ({ isHome }: any) => {
   const navigation = useNavigate()
 
   // Get All Patients
@@ -34,6 +35,9 @@ const AllPatientsComponent = () => {
     },
   })
 
+  // Filter last 5 Patients
+  const lastRecentPatients = patientData?.slice(-5)
+
   return (<>
     {isLoading ?
       <Loading />
@@ -44,8 +48,18 @@ const AllPatientsComponent = () => {
           <div className="card">
             <div className="card-header">
               <h4 className="card-title d-inline-block">
-                جميع المرضى
+                {isHome === true ? 'المرضى المضافين حديثا' : 'جميع المرضى'}
               </h4>
+              {isHome === true ?
+                <Link
+                  to={pathList.allPatients}
+                  className="patient-views float-start"
+                >
+                  عرض الكل
+                </Link>
+                :
+                null
+              }
             </div>
             <div className="card-body p-0 table-dash">
               <div className="table-responsive">
@@ -61,7 +75,21 @@ const AllPatientsComponent = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {
+                    {isHome === true ?
+                      lastRecentPatients.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
+                        return <PatientsTable
+                          key={id}
+                          name={name}
+                          age={age}
+                          document_number={document_number}
+                          added_at={format(added_at, 'dd/MM/yyyy')}
+                          date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
+                          gender={gender}
+                          onDeleteClick={() => setGlobalId(id)}
+                          onEditClick={() => navigation(`/home/edit_patient/${id}`)}
+                        />
+                      })
+                      :
                       patientData.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
                         return <PatientsTable
                           key={id}
