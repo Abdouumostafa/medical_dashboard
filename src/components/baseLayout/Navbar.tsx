@@ -6,7 +6,6 @@ import {
   logo,
   noteicon1,
   searchnormal,
-  user06
 }
   from "../../imagesPath/imagesPath";
 import { Link } from "react-router-dom";
@@ -187,48 +186,7 @@ const Navbar = () => {
               </div>
             </div>
           </li>
-          <li className="nav-item dropdown has-arrow user-profile-list d-none d-sm-block">
-            <Link
-              to="#"
-              className="dropdown-toggle nav-link user-link"
-              data-bs-toggle="dropdown"
-            >
-              <span className="user-img">
-                <img src={user06} alt="Admin" />
-              </span>
-              <div className="user-names text-end">
-                <h5>دكتور محمد</h5>
-                <span>الادمن</span>
-              </div>
-            </Link>
-            <div className="dropdown-menu">
-              <Link className="dropdown-item" to="/profile">
-                الملف الشخصي
-              </Link>
-              <Link className="dropdown-item" to={pathList.login}>
-                تسجيل خروج
-              </Link>
-            </div>
-          </li>
         </ul>
-        <div className="dropdown mobile-user-menu float-start">
-          <Link
-            to="#"
-            className="dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i className="fa-solid fa-ellipsis-vertical" />
-          </Link>
-          <div className="dropdown-menu dropdown-menu-end">
-            <Link className="dropdown-item" to="/profile">
-              الملف الشخصي
-            </Link>
-            <Link className="dropdown-item" to="/login">
-              تسجيل خروج
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );
