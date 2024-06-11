@@ -11,6 +11,9 @@ import CreateNewUser from "./pages/users/CreateNewUser"
 import AllUsers from "./pages/users/AllUsers"
 import UpdateUser from "./pages/users/UpdateUser"
 import ProtectedRoutes from "./routes/ProtectedRoutes"
+import AllExports from "./pages/exports/AllExports"
+import CreateExport from "./pages/exports/CreateExport"
+import UpdateExport from "./pages/exports/UpdateExport"
 
 const queryClient = new QueryClient()
 
@@ -80,6 +83,27 @@ const router = createBrowserRouter(
       }
         path={pathList.updateUser} />
 
+      {/* Exports */}
+      <Route element={
+        <ProtectedRoutes>
+          <AllExports />
+        </ProtectedRoutes>
+      }
+        path={pathList.allExports} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <CreateExport />
+        </ProtectedRoutes>
+      }
+        path={pathList.createExports} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <UpdateExport />
+        </ProtectedRoutes>
+      }
+        path={pathList.update_exports} />
     </>
   )
 )

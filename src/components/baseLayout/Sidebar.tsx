@@ -160,7 +160,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/add-doctor"
+                      to={pathList.createExports}
                     >
                       إضافة توريد جديد
                     </Link>
@@ -172,7 +172,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/editdoctor"
+                      to={pathList.allExports}
                     >
                       جميع التوريدات
                     </Link>

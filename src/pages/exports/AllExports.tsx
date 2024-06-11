@@ -1,8 +1,15 @@
+import BaseLayout from "../../layouts/BaseLayout"
 
 const AllExports = () => {
-    return (
-        <div>AllExports</div>
-    )
+  return (
+    <>
+      <BaseLayout />
+      <div className="page-wrapper">
+        <div className="content">
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default AllExports
