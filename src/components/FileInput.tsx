@@ -1,12 +1,12 @@
 import { useState } from "react"
 
 type IProps = {
-  fileName: string,
   onChange: any,
-  fileId: string
+  fileId: string,
+  name: string
 }
 
-const FileInput = ({ fileId, onChange }: IProps) => {
+const FileInput = ({ fileId, onChange, name }: IProps) => {
   const [fileNameState, setFileNameState] = useState('ليس هناك أي ملف تم إختياره')
 
   return (
@@ -19,7 +19,9 @@ const FileInput = ({ fileId, onChange }: IProps) => {
         onChange
         // @ts-ignore
         setFileNameState(e.target.files[0]?.name)
-      }} />
+      }}
+        name={name}
+      />
     </>
   )
 }
