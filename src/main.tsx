@@ -11,6 +11,7 @@ import { QueryClient } from '@tanstack/react-query'
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+    // @ts-ignore
     <QueryClientProvider client={queryClient}>
         <App />
     </QueryClientProvider>

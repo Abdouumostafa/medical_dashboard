@@ -8,7 +8,7 @@ type IProps = {
   editClick?: any,
 }
 
-const ReceiptComponent = ({ id, document_number, receiving_date, notes, editClick }: IProps) => {
+const ReceiptComponent = ({ id, document_number, receiving_date, notes }: IProps) => {
   return (
     <>
       <tr>
