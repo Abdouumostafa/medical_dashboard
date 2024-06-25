@@ -53,7 +53,7 @@ const AllExportsComponent = ({ isHome }: any) => {
                     </tr>
                   </thead>
                   <tbody> {isHome === true ?
-                    lastRecentExports.map(({ id, receiver_name, date, invoice_date, orders }: any) => {
+                    lastRecentExports?.map(({ id, receiver_name, date, invoice_date, orders }: any) => {
                       return <ExportsTable
                         key={id}
                         receiver_name={receiver_name}
@@ -66,7 +66,7 @@ const AllExportsComponent = ({ isHome }: any) => {
                       />
                     })
                     :
-                    exportsData.map(({ id, receiver_name, date, invoice_date, orders }: any) => {
+                    exportsData?.map(({ id, receiver_name, date, invoice_date, orders }: any) => {
                       return <ExportsTable
                         key={id}
                         receiver_name={receiver_name}
@@ -87,7 +87,7 @@ const AllExportsComponent = ({ isHome }: any) => {
         </div>
         <DeleteModal
           modalId="delete_patient"
-          onDeletionAction={() => deletePatientMutation.mutate()}
+        // onDeletionAction={() => deletePatientMutation.mutate()}
         />
       </div>
     }

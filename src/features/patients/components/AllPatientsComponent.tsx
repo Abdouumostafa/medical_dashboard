@@ -76,7 +76,7 @@ const AllPatientsComponent = ({ isHome }: any) => {
                   </thead>
                   <tbody>
                     {isHome === true ?
-                      lastRecentPatients.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
+                      lastRecentPatients?.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
                         return <PatientsTable
                           key={id}
                           name={name}
@@ -90,7 +90,7 @@ const AllPatientsComponent = ({ isHome }: any) => {
                         />
                       })
                       :
-                      patientData.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
+                      patientData?.map(({ id, name, age, document_number, added_at, date_order_delivered, gender }: any) => {
                         return <PatientsTable
                           key={id}
                           name={name}

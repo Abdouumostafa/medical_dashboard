@@ -18,6 +18,8 @@ const AllUsersComponent = () => {
   })
   const userData = data?.data?.data
 
+  console.log(userData)
+
   const [globalId, setGlobalId] = useState<any>()
 
   const deleteUserMutation = useMutation({
@@ -68,7 +70,7 @@ const AllUsersComponent = () => {
                           job_title={job_title}
                           is_admin={is_admin}
                           onDeleteClick={() => setGlobalId(pk)}
-                          onEditClick={() => navigation(`/home/update_user/${pk}`)}
+                          onEditClick={() => navigation(`update_user/${pk}`)}
                         />
                       })
                     }
