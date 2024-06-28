@@ -198,7 +198,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/stafflist"
+                      to={pathList.create_receipt}
                     >
                       إضافة إستلام جديد
                     </Link>
@@ -208,7 +208,7 @@ const Sidebar = (props: any) => {
                       className={
                         props?.activeClassName === "add-staff" ? "active" : ""
                       }
-                      to="/addstaff"
+                      to={pathList.all_receipts}
                     >
                       جميع الاستلامات
                     </Link>

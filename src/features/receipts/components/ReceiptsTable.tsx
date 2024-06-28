@@ -1,34 +1,24 @@
-import { pathList } from "../../routes/routesPaths"
 import { Link } from "react-router-dom"
 
 type IProps = {
-  id: number,
-  image: any,
   name: string,
+  doc_number: number,
+  notes: string,
+  gender: string,
   age: number,
-  gander: string,
-  document_number: number,
-  received_order_date: string
+  date_order_delivered: string,
+  onEditClick: any,
+  onDeleteClick: any
 }
-
-const PatientComponent = ({ id, image, name, age, gander, document_number, received_order_date }: IProps) => {
+const ReceiptsTable = ({ name, doc_number, notes, gender, age, date_order_delivered, onDeleteClick, onEditClick }: IProps) => {
   return (
     <tr>
-      <td>{id}</td>
-      <td className="table-image">
-        <img
-          width={28}
-          height={28}
-          className="rounded-circle"
-          src={image}
-          alt="#"
-        />
-        <h2>{name}</h2>
-      </td>
+      <td>{name}</td>
+      <td>{doc_number}</td>
+      <td>{notes}</td>
+      <td>{gender}</td>
       <td>{age}</td>
-      <td>{gander}</td>
-      <td>{document_number}</td>
-      <td>{received_order_date}</td>
+      <td>{date_order_delivered}</td>
       <td className="text-end">
         <div className="dropdown dropdown-action">
           <Link
@@ -40,18 +30,19 @@ const PatientComponent = ({ id, image, name, age, gander, document_number, recei
             <i className="fa fa-ellipsis-v" />
           </Link>
           <div className="dropdown-menu dropdown-menu-end">
-            <Link
+            <button
               className="dropdown-item"
-              to={pathList.editPatient}
+              onClick={onEditClick}
             >
               <i className="fa-solid fa-pen-to-square m-r-5" />{" "}
-              تعديل
-            </Link>
+              تعدبل
+            </button>
             <Link
               className="dropdown-item"
               to="#"
               data-bs-toggle="modal"
               data-bs-target="#delete_patient"
+              onClick={onDeleteClick}
             >
               <i className="fa fa-trash-alt m-r-5"></i> حذف
             </Link>
@@ -62,4 +53,4 @@ const PatientComponent = ({ id, image, name, age, gander, document_number, recei
   )
 }
 
-export default PatientComponent
+export default ReceiptsTable

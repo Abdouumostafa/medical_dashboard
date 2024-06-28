@@ -1,8 +1,8 @@
 import BaseLayout from "../../layouts/BaseLayout"
 import StatsBoxs from "../../features/home/components/StatsBoxs"
-import ReceiptsTable from "../../features/receiptsTable/components/ReceiptsTable"
 import DeleteModal from "../../components/DeleteModal"
 import AllPatientsComponent from "../../features/patients/components/AllPatientsComponent"
+import AllReceiptsComponent from "../../features/receipts/components/AllReceiptsComponent"
 
 const HomePage = () => {
   return (
@@ -11,7 +11,7 @@ const HomePage = () => {
       <div className="page-wrapper">
         <div className="content">
           <StatsBoxs />
-          <ReceiptsTable />
+          <AllReceiptsComponent isHome={true} />
           <AllPatientsComponent isHome={true} />
         </div>
         <DeleteModal modalId="delete_receipt" />

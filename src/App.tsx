@@ -14,6 +14,9 @@ import ProtectedRoutes from "./routes/ProtectedRoutes"
 import AllExports from "./pages/exports/AllExports"
 import CreateExport from "./pages/exports/CreateExport"
 import UpdateExport from "./pages/exports/UpdateExport"
+import CreateReceipt from "./pages/receipts/CreateReceipt"
+import AllReceipts from "./pages/receipts/AllReceipts"
+import UpdateReceipts from "./pages/receipts/UpdateReceipts"
 
 const queryClient = new QueryClient()
 
@@ -104,6 +107,28 @@ const router = createBrowserRouter(
         </ProtectedRoutes>
       }
         path={pathList.update_exports} />
+
+      {/* Receipts */}
+      <Route element={
+        <ProtectedRoutes>
+          <CreateReceipt />
+        </ProtectedRoutes>
+      }
+        path={pathList.create_receipt} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <AllReceipts />
+        </ProtectedRoutes>
+      }
+        path={pathList.all_receipts} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <UpdateReceipts />
+        </ProtectedRoutes>
+      }
+        path={pathList.update_receipts} />
     </>
   )
 )
