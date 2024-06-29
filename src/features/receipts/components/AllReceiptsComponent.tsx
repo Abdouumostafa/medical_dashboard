@@ -4,10 +4,10 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
 import DeleteModal from "../../../components/DeleteModal"
-import { format } from "date-fns"
 import getAllReceipts from "../services/getAllReceipts"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import ReceiptsTable from "./ReceiptsTable"
+import deleteReceipt from "../services/deleteReceipt"
 
 const AllReceiptsComponent = ({ isHome }: any) => {
   const navigation = useNavigate()
@@ -23,17 +23,17 @@ const AllReceiptsComponent = ({ isHome }: any) => {
   // Delete Patient
   const [globalId, setGlobalId] = useState()
 
-  // const deletePatientMutation = useMutation({
-  //   // mutationFn: () => {
-  //   //   return deletePatient(globalId)
-  //   // },
-  //   onSuccess: () => {
-  //     toast.success('تم حذف المريض')
-  //     setTimeout(() => {
-  //       location.reload()
-  //     }, 1000);
-  //   },
-  // })
+  const deletePatientMutation = useMutation({
+    mutationFn: () => {
+      return deleteReceipt(globalId)
+    },
+    onSuccess: () => {
+      toast.success('تم حذف الاستلام')
+      setTimeout(() => {
+        location.reload()
+      }, 1000);
+    },
+  })
 
   // Filter last 5 Receipts
   const lastRecentReceipts = receiptsData?.slice(-5)
@@ -100,6 +100,8 @@ const AllReceiptsComponent = ({ isHome }: any) => {
                           gender={patient?.gender}
                           age={patient?.age}
                           date_order_delivered={receiving_date}
+                          onDeleteClick={() => setGlobalId(id)}
+                          onEditClick={() => navigation(`/home/all_receipts/update_receipt/${id}`)}
                         />
                       })
                     }
@@ -111,7 +113,7 @@ const AllReceiptsComponent = ({ isHome }: any) => {
         </div>
         <DeleteModal
           modalId="delete_patient"
-        // onDeletionAction={() => deletePatientMutation.mutate()}
+          onDeletionAction={() => deletePatientMutation.mutate()}
         />
       </div>
     }
