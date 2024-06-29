@@ -23,7 +23,6 @@ const UpdateReceiptComponent = () => {
 
   // Update User
   const [formData, setFormData] = useState({
-    document_number: '',
     notes: '',
     receiving_date: '',
   })
@@ -31,7 +30,6 @@ const UpdateReceiptComponent = () => {
   const updatePatientMutation = useMutation({
     mutationFn: () => {
       return updateReceipt(id, {
-        document_number: formData?.document_number ? formData.document_number : receiptData?.patient?.document_number,
         notes: formData?.notes ? formData.notes : receiptData?.notes,
         receiving_date: formData?.receiving_date ? formData.receiving_date : receiptData?.receiving_date,
       })
@@ -68,23 +66,6 @@ const UpdateReceiptComponent = () => {
               </div>
             </div>
             <FormInput
-              label="رقم الملف"
-              required
-              type="number"
-              name="document_number"
-              defaultValue={receiptData?.patient?.document_number}
-              onChange={
-                (text) => {
-                  setFormData((prev) => {
-                    return {
-                      ...prev,
-                      document_number: JSON.parse(text)
-                    }
-                  })
-                }
-              }
-            />
-            <FormInput
               label="الملاحظات"
               required
               type="text"
@@ -117,6 +98,13 @@ const UpdateReceiptComponent = () => {
                   })
                 }
               }
+            />
+            <FormInput
+              label="رقم الملف"
+              disabled
+              type="number"
+              name="document_number"
+              defaultValue={receiptData?.patient?.document_number}
             />
             <FormInput
               label="اسم المريض"
