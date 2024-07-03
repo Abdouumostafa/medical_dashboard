@@ -72,6 +72,7 @@ const AllPatientsComponent = ({ isHome }: any) => {
                       <th>رقم الملف</th>
                       <th>تاريخ الاضافة</th>
                       <th>اخر تاريخ استلام</th>
+                      <th>تقرير الاستلام</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,7 +87,8 @@ const AllPatientsComponent = ({ isHome }: any) => {
                           date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
                           gender={gender}
                           onDeleteClick={() => setGlobalId(id)}
-                          onEditClick={() => navigation(`/home/edit_patient/${id}`)}
+                          onEditClick={() => navigation(`/home/all_patients/edit_patient/${id}`)}
+                          patientReport={() => navigation(`/home/all_patients/patient_report/${id}`)}
                         />
                       })
                       :
@@ -100,7 +102,8 @@ const AllPatientsComponent = ({ isHome }: any) => {
                           date_order_delivered={date_order_delivered === null ? 'لا يوجد' : date_order_delivered}
                           gender={gender}
                           onDeleteClick={() => setGlobalId(id)}
-                          onEditClick={() => navigation(`/home/edit_patient/${id}`)}
+                          onEditClick={() => navigation(`/home/all_patients/edit_patient/${id}`)}
+                          patientReport={() => navigation(`/home/all_patients/patient_report/${id}`)}
                         />
                       })
                     }

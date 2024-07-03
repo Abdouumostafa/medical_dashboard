@@ -9,6 +9,7 @@ export const pathList = {
     createPatient: '/home/create_new_patient',
     allPatients: '/home/all_patients',
     editPatient: '/home/all_patients/edit_patient/:id',
+    patientReport: '/home/all_patients/patient_report/:id',
 
     // Users
     allUsers: '/home/all_users',

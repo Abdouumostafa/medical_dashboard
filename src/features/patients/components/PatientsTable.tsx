@@ -8,9 +8,10 @@ type IProps = {
   added_at: string,
   date_order_delivered: string,
   onEditClick?: any,
-  onDeleteClick?: any
+  onDeleteClick?: any,
+  patientReport: any
 }
-const PatientsTable = ({ name, age, gender, document_number, added_at, date_order_delivered, onDeleteClick, onEditClick }: IProps) => {
+const PatientsTable = ({ name, age, gender, document_number, added_at, date_order_delivered, onDeleteClick, onEditClick, patientReport }: IProps) => {
   return (
     <tr>
       <td>{name}</td>
@@ -25,6 +26,7 @@ const PatientsTable = ({ name, age, gender, document_number, added_at, date_orde
       <td className="appoint-time">
         <span>{date_order_delivered}</span>
       </td>
+      <td><button onClick={patientReport} className="btn-primary text-white px-3 py-1">عرض</button></td>
       <td className="text-end">
         <div className="dropdown dropdown-action">
           <Link
