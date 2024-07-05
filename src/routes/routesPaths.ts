@@ -24,5 +24,8 @@ export const pathList = {
     // Receipts
     all_receipts: '/home/all_receipts',
     create_receipt: '/home/create_receipt',
-    update_receipts: '/home/all_receipts/update_receipt/:id'
+    update_receipts: '/home/all_receipts/update_receipt/:id',
+
+    // Notifications
+    notifications: '/home/notifications'
 }

@@ -11106,3 +11106,25 @@ tr.ant-table-row.ant-table-row-level-0.ant-table-row-selected,
     font-size: 12px;
   } */
 }
+
+.notification_element {
+  border: 1px solid #dcdcdc;
+  padding: 4px 15px;
+  border-radius: 8px;
+}
+
+.notifications_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notifications_header .icon {
+  cursor: pointer;
+}
+
+.notification-time {
+  margin-bottom: 0px;
+  font-size: 14px;
+  color: #989c9e;
+}

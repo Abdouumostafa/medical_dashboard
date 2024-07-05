@@ -256,7 +256,7 @@ const Sidebar = (props: any) => {
                   className={
                     props?.activeClassName === "chat" ? "active" : ""
                   }
-                  to="/chat"
+                  to={pathList.notifications}
                 >
                   <span className="menu-side">
                     <img src={noteicon1} alt="" />
