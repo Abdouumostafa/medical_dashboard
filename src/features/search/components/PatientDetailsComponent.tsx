@@ -15,8 +15,6 @@ const PatientDetailsComponent = () => {
 
   const patientDetails = data?.data?.data
 
-  console.log(patientDetails)
-
   return (
     <>
       {isLoading ?

@@ -14,7 +14,7 @@ const SearchComponent = () => {
           placeholder="ابحث عن مريض برقم الملف"
           onChange={(e) => setDocNumber(e.target.value)}
         />
-        <Link to={`/home/patient_details/${docNumber}`} className="btn">
+        <Link to={`${docNumber !== null ? `/home/patient_details/${docNumber}` : ``}`} className="btn">
           <img src={searchnormal} alt="search icon" />
         </Link>
       </form>
