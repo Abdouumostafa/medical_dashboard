@@ -27,5 +27,8 @@ export const pathList = {
     update_receipts: '/home/all_receipts/update_receipt/:id',
 
     // Notifications
-    notifications: '/home/notifications'
+    notifications: '/home/notifications',
+
+    // Patient Details
+    patientDetails: '/home/patient_details/:id'
 }

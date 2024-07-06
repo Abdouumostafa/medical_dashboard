@@ -3,10 +3,11 @@ import {
   baricon,
   baricon1,
   logo,
-  searchnormal,
 }
   from "../../imagesPath/imagesPath";
 import { Link } from "react-router-dom";
+import SearchComponent from "../../features/search/components/SearchComponent";
+
 const Navbar = () => {
   const handlesidebar = () => {
     document.body.classList.toggle("mini-sidebar");
@@ -34,18 +35,7 @@ const Navbar = () => {
         <Link id="mobile_btn" className="mobile_btn float-end" to="#" onClick={handlesidebarmobilemenu}>
           <img src={baricon1} alt="" />
         </Link>
-        <div className="top-nav-search mob-view">
-          <form>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="ابحث هنا"
-            />
-            <button className="btn">
-              <img src={searchnormal} alt="" />
-            </button>
-          </form>
-        </div>
+        <SearchComponent />
       </div>
     </div>
   );

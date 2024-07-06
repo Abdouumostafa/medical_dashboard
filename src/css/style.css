@@ -759,7 +759,7 @@ textarea.form-control {
   padding: 0 20px;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 245px;
   z-index: 1;
 }
 .logo {
@@ -11127,4 +11127,14 @@ tr.ant-table-row.ant-table-row-level-0.ant-table-row-selected,
   margin-bottom: 0px;
   font-size: 14px;
   color: #989c9e;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
