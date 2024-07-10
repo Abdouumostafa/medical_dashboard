@@ -61,7 +61,7 @@ const UpdateExportComponent = () => {
     }
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -69,9 +69,10 @@ const UpdateExportComponent = () => {
     }));
   };
 
-  const handleOrderChange = (index, e) => {
+  const handleOrderChange = (index: number, e: any) => {
     const { name, value } = e.target;
     const newOrders = [...formData.orders];
+    // @ts-ignore
     newOrders[index][name] = value;
     setFormData((prevState) => ({
       ...prevState,
@@ -79,7 +80,7 @@ const UpdateExportComponent = () => {
     }));
   };
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm = (e: any) => {
     e.preventDefault();
     updateExportMutation.mutate();
   };
