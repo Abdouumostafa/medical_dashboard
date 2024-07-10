@@ -20,6 +20,7 @@ import UpdateReceipts from "./pages/receipts/UpdateReceipts"
 import PatientReport from "./pages/patients/PatientReport"
 import AllNotifications from "./pages/notifications/AllNotifications"
 import PatientDetails from "./pages/patientDetails/PatientDetails"
+import ExportReports from "./pages/exports/ExportReports"
 
 const queryClient = new QueryClient()
 
@@ -117,6 +118,13 @@ const router = createBrowserRouter(
         </ProtectedRoutes>
       }
         path={pathList.update_exports} />
+
+      <Route element={
+        <ProtectedRoutes>
+          <ExportReports />
+        </ProtectedRoutes>
+      }
+        path={pathList.exports_report} />
 
       {/* Receipts */}
       <Route element={

@@ -148,7 +148,7 @@ const Sidebar = (props: any) => {
                           ? "active"
                           : ""
                       }
-                      to="/doctorlist"
+                      to={pathList.exports_report}
                     >
                       تقارير التوريدات
                     </Link>

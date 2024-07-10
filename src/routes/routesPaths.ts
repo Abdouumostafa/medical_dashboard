@@ -20,6 +20,7 @@ export const pathList = {
     allExports: '/home/all_exports',
     createExports: '/home/create_exports',
     update_exports: '/home/all_exports/update_export/:id',
+    exports_report: '/home/export_report',
 
     // Receipts
     all_receipts: '/home/all_receipts',

@@ -5,12 +5,10 @@ type IProps = {
   date: string,
   invoice_date: string,
   orders: any,
-  onEditClick: any,
   onDeleteClick: any,
   onViewClick: any
 }
-const ExportsTable = ({ receiver_name, date, invoice_date, onDeleteClick,
-  onEditClick, onViewClick, orders
+const ExportsTable = ({ receiver_name, date, invoice_date, onDeleteClick, onViewClick, orders
 }: IProps) => {
   return (
     <tr>
@@ -29,13 +27,6 @@ const ExportsTable = ({ receiver_name, date, invoice_date, onDeleteClick,
             <i className="fa fa-ellipsis-v" />
           </Link>
           <div className="dropdown-menu dropdown-menu-end">
-            <button
-              className="dropdown-item"
-              onClick={onEditClick}
-            >
-              <i className="fa-solid fa-pen-to-square m-r-5" />{" "}
-              تعدبل
-            </button>
             <Link
               className="dropdown-item"
               to="#"

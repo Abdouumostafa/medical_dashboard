@@ -1,7 +1,6 @@
-import UpdateExportComponent from "../../features/exports/components/UpdateExportComponent"
 import BaseLayout from "../../layouts/BaseLayout"
 
-const UpdateExport = () => {
+const ExportReports = () => {
   return (
     <>
       <BaseLayout />
@@ -11,15 +10,14 @@ const UpdateExport = () => {
             <div className="col-sm-12">
               <div className="card">
                 <div className="card-body">
-                  <UpdateExportComponent />
+                  {/* <CreateExportsComponent /> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
-  )
+    </>)
 }
 
-export default UpdateExport
+export default ExportReports

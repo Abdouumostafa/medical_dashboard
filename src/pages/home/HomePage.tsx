@@ -3,6 +3,7 @@ import StatsBoxs from "../../features/home/components/StatsBoxs"
 import DeleteModal from "../../components/DeleteModal"
 import AllPatientsComponent from "../../features/patients/components/AllPatientsComponent"
 import AllReceiptsComponent from "../../features/receipts/components/AllReceiptsComponent"
+import AllExportsComponent from "../../features/exports/components/AllExportsComponent"
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
         <div className="content">
           <StatsBoxs />
           <AllReceiptsComponent isHome={true} />
+          <AllExportsComponent isHome={true} />
           <AllPatientsComponent isHome={true} />
         </div>
         <DeleteModal modalId="delete_receipt" />

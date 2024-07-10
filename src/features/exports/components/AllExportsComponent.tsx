@@ -1,22 +1,35 @@
-import { ToastContainer } from "react-toastify"
+import { toast, ToastContainer } from "react-toastify"
 import DeleteModal from "../../../components/DeleteModal"
 import Loading from "../../../components/Loading"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import getAllExports from "../services/getAllExports"
 import { Link } from "react-router-dom"
 import { pathList } from "../../../routes/routesPaths"
 import ExportsTable from "./ExportsTable"
+import { useState } from "react"
+import deleteExport from "../services/deleteExport"
 
 const AllExportsComponent = ({ isHome }: any) => {
 
   const { data, isLoading } = useQuery({
-    queryKey: ['allExports'],
+    queryKey: ['exports'],
     queryFn: getAllExports
   })
-
   const exportsData = data?.data?.data
-
   const lastRecentExports = exportsData?.slice(-5)
+
+  const [globalId, setGlobalId] = useState<any>()
+  const deleteExportMutation = useMutation({
+    mutationFn: () => {
+      return deleteExport(globalId)
+    },
+    onSuccess: () => {
+      toast.success('تم حذف التوريد بنجاح')
+      setTimeout(() => {
+        location.reload()
+      }, 1000);
+    }
+  })
 
   return (<>
     {isLoading ?
@@ -60,9 +73,8 @@ const AllExportsComponent = ({ isHome }: any) => {
                         date={date}
                         invoice_date={invoice_date}
                         orders={orders?.length === 0 ? 'لا يوجد طلبات' : orders?.length}
-                        onDeleteClick={''}
-                        onEditClick={''}
-                        onViewClick={''}
+                        onDeleteClick={() => setGlobalId(id)}
+                        onViewClick={() => { }}
                       />
                     })
                     :
@@ -73,9 +85,8 @@ const AllExportsComponent = ({ isHome }: any) => {
                         date={date}
                         invoice_date={invoice_date}
                         orders={orders?.length === 0 ? 'لا يوجد طلبات' : orders?.length}
-                        onDeleteClick={''}
-                        onEditClick={''}
-                        onViewClick={''}
+                        onDeleteClick={() => setGlobalId(id)}
+                        onViewClick={() => { }}
                       />
                     })
                   }
@@ -87,7 +98,7 @@ const AllExportsComponent = ({ isHome }: any) => {
         </div>
         <DeleteModal
           modalId="delete_patient"
-        // onDeletionAction={() => deletePatientMutation.mutate()}
+          onDeletionAction={() => deleteExportMutation.mutate()}
         />
       </div>
     }

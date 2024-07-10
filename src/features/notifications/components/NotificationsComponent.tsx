@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import getAllNotifications from "../services/getAllNotifications"
 import { IoClose } from "react-icons/io5"
-import { ToastContainer } from "react-toastify"
+import { toast, ToastContainer } from "react-toastify"
 import Loading from "../../../components/Loading"
 import { format } from "date-fns"
 import readNotification from "../services/readNotification"
@@ -21,7 +21,8 @@ const NotificationsComponent = () => {
     mutationFn: (variables) => {
       return readNotification(variables)
     },
-    onSuccess: () => {
+    onSuccess: (success) => {
+      toast.success(success?.data?.message)
       return client.invalidateQueries({
         queryKey: ['notifications']
       })

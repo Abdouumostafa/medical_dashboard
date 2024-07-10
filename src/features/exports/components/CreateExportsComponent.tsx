@@ -1,13 +1,13 @@
-import FormInput from "../../../components/FormInput"
 import { pathList } from "../../../routes/routesPaths"
-import { Link } from "react-router-dom"
-import { ToastContainer } from "react-toastify"
+import { Link, useNavigate } from "react-router-dom"
+import { toast, ToastContainer } from "react-toastify"
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query"
 import postExport from "../services/postExport"
 
 const CreateExportsComponent = () => {
-  const [fileNameState, setFileNameState] = useState('ليس هناك أي ملف تم إختياره')
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     receiver_name: '',
     orders: [{
@@ -16,15 +16,47 @@ const CreateExportsComponent = () => {
     }],
     date: '',
     invoice_date: '',
-    attachment: '',
   })
 
-  console.log(formData)
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleOrderChange = (index: number, e: any) => {
+    const { name, value } = e.target;
+    const newOrders = [...formData.orders];
+    // @ts-ignore
+    newOrders[index][name] = value;
+    setFormData((prevState) => ({
+      ...prevState,
+      orders: newOrders
+    }));
+  };
+
+  const addOrder = () => {
+    setFormData((prevState: any) => ({
+      ...prevState,
+      orders: [...prevState.orders, { prod_name: '', quantity: '' }]
+    }));
+  };
 
   const postExportsMutation = useMutation({
     mutationFn: () => postExport(formData),
-    onSuccess: () => { },
-    onError: () => { }
+    onSuccess: (success) => {
+      toast.success(success?.data?.message)
+      setTimeout(() => {
+        navigate(pathList.allExports);
+      }, 1000);
+    },
+    onError: (error) => {
+      // @ts-ignore
+      toast.error(error?.response?.data?.message)
+    }
   })
 
   const onSubmitForm = (e: any) => {
@@ -42,109 +74,87 @@ const CreateExportsComponent = () => {
               <h4>اضافة توريد جديد</h4>
             </div>
           </div>
-          <FormInput
-            label="اسم المستلم"
-            required
-            type="text"
-            name="receiver_name"
-            onChange={
-              (text) => {
-                setFormData((prev) => {
-                  return {
-                    ...prev,
-                    receiver_name: text
-                  }
-                })
-              }
-            }
-          />
-          <FormInput
-            label="اسم المنتج"
-            required
-            type="text"
-            name="prod_name"
-            onChange={(text) => {
-              setFormData((prev) => {
-                const updatedOrders = [...prev.orders];
-                updatedOrders[0] = {
-                  ...updatedOrders[0],
-                  prod_name: text,
-                };
-
-                return {
-                  ...prev,
-                  orders: updatedOrders,
-                };
-              });
-            }}
-          />
-          <FormInput
-            label="الكمية"
-            required
-            type="number"
-            name="quantity"
-            onChange={(text) => {
-              setFormData((prev) => {
-                const updatedOrders = [...prev.orders];
-                updatedOrders[0] = {
-                  ...updatedOrders[0],
-                  quantity: JSON.parse(text),
-                };
-
-                return {
-                  ...prev,
-                  orders: updatedOrders,
-                };
-              });
-            }}
-          />
-          <FormInput
-            type="date"
-            label="التاريخ"
-            required
-            name="date"
-            onChange={
-              (text: any) => {
-                setFormData((prev) => {
-                  return {
-                    ...prev,
-                    date: text
-                  }
-                })
-              }
-            }
-          />
-          <FormInput
-            type="date"
-            label="تاريخ الفاتورة"
-            required
-            name="invoice_date"
-            onChange={
-              (text: any) => {
-                setFormData((prev) => {
-                  return {
-                    ...prev,
-                    invoice_date: text
-                  }
-                })
-              }
-            }
-          />
-          <div className="dateInput">
-            <label className="btn btn-primary cancel-form z-0 ms-3" htmlFor={'attachment'}>اختر ملف</label>
-            {fileNameState}
+          <div className="form-group">
+            <label>
+              اسم المستلم <span className="login-danger">*</span>
+            </label>
+            <input
+              required
+              type="text"
+              onChange={handleChange}
+              value={formData.receiver_name}
+              className="form-control"
+              name="receiver_name"
+              id="receiver_name"
+            />
           </div>
-          <input className="form-control d-none" type="file" id={'attachment'} onChange={(text: any) => {
-            setFileNameState(text.target.files[0].name)
-            setFormData((prev) => {
-              return {
-                ...prev,
-                attachment: text.target.files[0].name
-              }
-            })
-          }}
-            name={'attachment'}
-          />
+          <button
+            onClick={addOrder}
+            type="button"
+            className="btn btn-primary w-25 mb-3 mt-2 me-2"
+          >
+            إضافة طلب آخر
+          </button>
+          {formData.orders.map((order, index) => {
+            return <div key={index}>
+              <div className="form-group">
+                <label>
+                  اسم المنتج <span className="login-danger">*</span>
+                </label>
+                <input
+                  required
+                  type="text"
+                  onChange={(e) => handleOrderChange(index, e)}
+                  value={order.prod_name}
+                  className="form-control"
+                  name="prod_name"
+                  id="prod_name"
+                />
+              </div>
+              <div className="form-group">
+                <label>
+                  الكمية<span className="login-danger">*</span>
+                </label>
+                <input
+                  required
+                  type="number"
+                  onChange={(e) => handleOrderChange(index, e)}
+                  value={order.quantity}
+                  className="form-control"
+                  name="quantity"
+                  id="quantity"
+                />
+              </div>
+            </div>
+          })}
+          <div className="form-group">
+            <label>
+              التاريخ<span className="login-danger">*</span>
+            </label>
+            <input
+              required
+              type="date"
+              onChange={handleChange}
+              value={formData.date}
+              className="form-control"
+              name="date"
+              id="date"
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              تاريخ الفاتورة<span className="login-danger">*</span>
+            </label>
+            <input
+              required
+              type="date"
+              onChange={handleChange}
+              value={formData.invoice_date}
+              className="form-control"
+              name="invoice_date"
+              id="invoice_date"
+            />
+          </div>
         </div>
         <div className="col-12">
           <div className="doctor-submit">
