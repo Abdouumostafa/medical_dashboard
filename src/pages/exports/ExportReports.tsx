@@ -1,3 +1,4 @@
+import ExportReportsComponent from "../../features/exports/components/ExportReportsComponent"
 import BaseLayout from "../../layouts/BaseLayout"
 
 const ExportReports = () => {
@@ -10,7 +11,7 @@ const ExportReports = () => {
             <div className="col-sm-12">
               <div className="card">
                 <div className="card-body">
-                  {/* <CreateExportsComponent /> */}
+                  <ExportReportsComponent />
                 </div>
               </div>
             </div>
