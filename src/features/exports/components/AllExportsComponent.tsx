@@ -3,13 +3,14 @@ import DeleteModal from "../../../components/DeleteModal"
 import Loading from "../../../components/Loading"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import getAllExports from "../services/getAllExports"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { pathList } from "../../../routes/routesPaths"
 import ExportsTable from "./ExportsTable"
 import { useState } from "react"
 import deleteExport from "../services/deleteExport"
 
 const AllExportsComponent = ({ isHome }: any) => {
+  const navigate = useNavigate()
 
   const { data, isLoading } = useQuery({
     queryKey: ['exports'],
@@ -74,7 +75,7 @@ const AllExportsComponent = ({ isHome }: any) => {
                         invoice_date={invoice_date}
                         orders={orders?.length === 0 ? 'لا يوجد طلبات' : orders?.length}
                         onDeleteClick={() => setGlobalId(id)}
-                        onViewClick={() => { }}
+                        onViewClick={() => navigate(`/home/all_exports/view_export/${id}`)}
                       />
                     })
                     :
@@ -86,7 +87,7 @@ const AllExportsComponent = ({ isHome }: any) => {
                         invoice_date={invoice_date}
                         orders={orders?.length === 0 ? 'لا يوجد طلبات' : orders?.length}
                         onDeleteClick={() => setGlobalId(id)}
-                        onViewClick={() => { }}
+                        onViewClick={() => navigate(`/home/all_exports/view_export/${id}`)}
                       />
                     })
                   }
